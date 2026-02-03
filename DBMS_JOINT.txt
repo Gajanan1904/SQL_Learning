@@ -56,3 +56,8 @@ SELECT *FROM orders o LEFT JOIN customers c ON o.customer_id = c.customer_id;
 
 Q.6Final orders with no matching customers
 SELECT *  FROM orders o LEFT JOIN customers c ON o.customer_id = c.customer_id WHERE c.customer_id IS NULL;
+
+Q.7Show all customers and all orders
+SELECT * FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id
+UNION
+SELECT * FROM customers c RIGHT JOIN orders o ON c.customer_id = o.customer_id;
