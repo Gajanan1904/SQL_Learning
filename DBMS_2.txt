@@ -1,0 +1,35 @@
+ CREATE DATABASE employees;
+
+  USE employees;
+
+  CREATE TABLE employees (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    department VARCHAR(30),
+    gender VARCHAR(10),
+    city VARCHAR(30),
+    salary INT,
+    experience INT
+);
+
+INSERT INTO employees VALUES
+(1, 'Rahul', 'IT', 'Male', 'Delhi', 70000, 5),
+(2, 'Anita', 'HR', 'Female', 'Mumbai', 50000, 4),
+(3, 'Aman', 'IT', 'Male', 'Delhi', 90000, 8),
+(4, 'Neha', 'Finance', 'Female', 'Pune', 60000, 6),
+(5, 'Rohit', 'IT', 'Male', 'Mumbai', 75000, 5),
+(6, 'Priya', 'HR', 'Female', 'Delhi', 48000, 3),
+(7, 'Vikas', 'Finance', 'Male', 'Pune', 65000, 7),
+(8, 'Sneha', 'IT', 'Female', 'Bangalore', 85000, 6),
+(9, 'Arjun', 'HR', 'Male', 'Mumbai', 52000, 4),
+(10,'Kavya', 'Finance', 'Female', 'Delhi', 72000, 8);
+
+Select * from employees;
+
+select department, avg(salary) from employees group by department;
+select department, avg(salary) from employees group by department having avg(salary) > 60000;
+select city, sum(salary) from employees group by city;
+select department, count(*) from employees where salary > 60000 group by department;
+select gender, max(salary) from employees group by gender;
+select department,city,avg(salary) from employees group by department,city;
+select department, count(*) as male_count  from employees where gender = 'Male' group by department;

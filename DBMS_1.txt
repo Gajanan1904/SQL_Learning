@@ -1,0 +1,60 @@
+#creating database
+CREATE DATABASE school;
+
+#using that database
+USE school;
+
+#creating a table & defining rows
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(50),
+    rollno INT
+);
+
+#Inserting data into table
+INSERT INTO students VALUES (1, "rollno", 21);
+SELECT * FROM students;
+
+#printing it
+
+SELECT * FROM students WHERE id = 1;
+
+
+#creating a new table called 'class'
+CREATE TABLE class (
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    course VARCHAR(50),
+    marks INT
+);
+insert into class values( 1, "Manish" , 18, "SQL", 78); #inserting values just 1
+insert into class values( 2, "Shivashish" , 20, "SQL", 98), (3, "Srijan", 20, "SQL", 95), (4, "Ayush", 20, "SQL", 92); #inserting multiple values
+SELECT * FROM class;
+SELECT name, marks FROM class;
+SELECT * FROM class ORDER BY marks DESC; #descend
+SELECT * FROM class ORDER BY marks ASC; #ascend
+SELECT * FROM class WHERE marks > 90;
+SELECT AVG(marks) FROM class;
+SELECT MIN(marks) FROM class;
+SELECT COUNT(*) FROM class;
+#OrderBy -> Sorting
+#Sum(marks) -> Sum of marks
+#AVG(makrs) -> Avg marks
+SELECT marks FROM class WHERE id = 2 AND marks = 98;
+DELETE FROM class WHERE id=3;
+SELECT * FROM class ORDER BY marks ASC LIMIT 2;
+UPDATE class SET marks=33 where id=1;
+
+select * from class;
+select course, avg(marks) from class group by course;
+update class set course="python" where marks = 98;
+update class set course="java" where marks = 92;
+update class set course="c++" where marks = 75;
+update class set course="DSA" where marks = 50;
+select course, avg(marks) from class group by course;
+select avg(marks), max(marks) from class group by age;
+select avg(marks), max(marks) from class group by age,course;
+
+#Give me average age and minimum marks by name and id
+select name, id, avg(age), min(marks) from class group by name, id;

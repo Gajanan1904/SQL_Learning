@@ -1,0 +1,90 @@
+create database sqlconstraints;
+use sqlconstraints;
+create table students(
+    id INT Primary key, #unique
+    make varchar(20) not null, #not null
+    PHNO int unique,
+);
+# -- Inserting three sample records
+ADD marks INT CHECK (marks > 0 AND marks > 100); #check
+ALTER TABLE students ALTER COLUMN marks SET DEFAULT 0; #default query
+INSERT INTO students (id, make, PHNO) VALUES (1, 'Shiv', 987654321);
+INSERT INTO students (id, make, PHNO) VALUES (2, 'Naman', 876543210);
+INSERT INTO students (id, make, PHNO) VALUES (3, 'Pranit', 765432109);
+UPDATE students
+SET marks = CASE
+WHEN id = 1 THEN 85
+WHEN id = 2 THEN 92
+WHEN id = 3 THEN 78
+END
+WHERE id IN (1, 2, 3);
+SELECT * FROM students;
+ALTER TABLE students
+ADD CONSTRAINT chk_marks_range CHECK (marks >= 0 AND marks <= 100);
+
+CREATE TABLE Table1(
+    student_id INT PRIMARY KEY, #primary key
+    name VARCHAR(50) NOT NULL,
+    age INT
+);
+INSERT INTO Table1 (student_id, name, age) VALUES
+(101, "Shivashish", 20),
+(102, "Srijan", 21);
+
+# mysql> SELECT * FROM Table1;
+# +------------+------------+------+
+# | student_id | name       | age  |
+# +------------+------------+------+
+# |        101 | Shivashish |   20 |
+# |        102 | Srijan     |   21 |
+# +------------+------------+------+
+# 2 rows in set (0.00 sec)
+
+CREATE TABLE Table2(
+    student_id INT,
+    FOREIGN KEY (student_id) REFERENCES Table1(student_id), #foreign key
+    name VARCHAR(50) NOT NULL,
+    age INT
+);
+INSERT INTO Table2 (student_id, course_name, duration) VALUES
+(101, "Python", 140),
+(102, "Srijan_Record", 160);
+
+# mysql> select * from Table2;
+# +------------+-------------------+------+
+# | student_id | name              | age  |
+# +------------+-------------------+------+
+# |        101 | Shivashish_Record |   20 |
+# |        102 | Srijan_Record     |   21 |
+# +------------+-------------------+------+
+# 2 rows in set (0.00 sec)
+
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50) NOT NULL
+);
+
+INSERT INTO courses (course_id, course_name) VALUES (101, 'Data Science');
+INSERT INTO courses (course_id, course_name) VALUES (102, 'Web Development');
+
+CREATE TABLE enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_id INT,
+    # -- This is the Foreign Key query
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+#This works because student 1 exists
+INSERT INTO enrollments (enrollment_id, student_id, course_id) VALUES (1, 1, 101);
+
+#This works because student 2 exists
+INSERT INTO enrollments (enrollment_id, student_id, course_id) VALUES (2, 2, 102);
+
+# -- This WILL FAIL if you try it (Error: student 99 does not exist)
+# -- INSERT INTO enrollments (enrollment_id, student_id, course_id) VALUES (3, 99, 101);
+
+
+ 
