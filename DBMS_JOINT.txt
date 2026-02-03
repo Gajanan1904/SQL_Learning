@@ -50,3 +50,6 @@ select c.customer_name,o.product from customers c join orders o on c.customer_id
 
 #Q.4 show all customers even they have no orders
 select c.customer_name,o.product from customers c left join orders o on c.customer_id=o.customer_id;
+
+Q.5 show all orders even customer doess not exist
+SELECT *FROM orders o LEFT JOIN customers c ON o.customer_id = c.customer_id;
