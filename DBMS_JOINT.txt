@@ -61,3 +61,6 @@ Q.7Show all customers and all orders
 SELECT * FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id
 UNION
 SELECT * FROM customers c RIGHT JOIN orders o ON c.customer_id = o.customer_id;
+
+Q.7Find customers who have placed atleast one order
+select customer_name from customers where customer_id IN (select customer_id from orders);
