@@ -93,7 +93,7 @@ B)2NF:Table must follow 1NF and no partial dependencies
 
 
 SQL LITE:
-	--Inbuilt in python
+	Inbuilt in python
 	--small
 	--within a file
 
