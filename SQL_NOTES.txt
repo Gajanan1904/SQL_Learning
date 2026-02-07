@@ -73,7 +73,7 @@ SELECT p.project_id, p.project_name, SUM(ep.hours_worked) AS total_hours FROM pr
 SELECT e.department, SUM(ep.hours_worked) AS total_hours FROM employees e JOIN employee_projects ep ON e.emp_id = ep.emp_id GROUP BY e.department;
 
 
-NORMALISATION : Converting a messy data into a good data(BAD TABLE-------->>GOOD TABLE)
+NORMALISATION : Converting a messy data into a good data(BAD TABLE------->>GOOD TABLE)
 	WHY NORMALISATION:
 		1)Data manipulation
 		2)Insert anomaly
