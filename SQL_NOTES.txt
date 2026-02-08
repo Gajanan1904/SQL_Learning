@@ -8,7 +8,7 @@ Sub-Query-Query inside another query(Subquery is a query whose result are used b
 Q.Find average salary filter employees where salaru is greater than avg salary'
 select employees,salary from table where salary>(select avg(salary) from table 
 
-Transaction: A Transaction is a sequence of sql operations executed as a single unit where either all changes are commited or all rolled back(ALL ARE NOTHING)
+Transaction:A Transaction is a sequence of sql operations executed as a single unit where either all changes are commited or all rolled back(ALL ARE NOTHING)
 
 Start transaction
 	SQL Statement 1
