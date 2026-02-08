@@ -1,7 +1,7 @@
 4 types of joint:
 1))Inner join-A intersection B(common from A and B)
 2))left join- Left Table + Inner join
-3)Right join-Right Table + Inner join
+3))Right join-Right Table + Inner join
 4)Full join-Left Table + Right Table + Inner join
 
 Sub-Query-Query inside another query(Subquery is a query whose result are used by another query)
